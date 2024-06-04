@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS functionalities</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+      }
+      body {
+        padding: 10px;
+        padding-top: 20px;
+      }
+      .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .control {
+        display: block;
+      }
+      h1 {
+        margin-bottom: 30px;
+      }
+      #image {
+        display: block;
+        margin: 0 auto;
+        margin-top: 30px;
+        border: 1px solid red;
+        width: 70%;
+      }
+
+      @media (min-width: 800px) {
+        body {
+          padding: 40px;
+        }
+        .controls {
+          flex-direction: row;
+          justify-content: center;
+        }
+        #image {
+          width: 650px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome, you can checkout any of the inputs below</h1>
+
+    <div>
+      <div class="controls">
+        <label class="control control-1">
+          Spacing:
+          <input id="progress" type="range" name="spacing" />
+        </label>
+
+        <label class="control control-2">
+          Blur:
+          <input id="transparency" type="range" name="blur" />
+        </label>
+
+        <label class="control control-3">
+          Base color:
+          <input id="colorPicker" type="color" name="color" />
+        </label>
+      </div>
+    </div>
+
+    <img src="assets/img/city-image.jpg" alt="city-image" id="image" />
+
+    <script>
+      let image = document.getElementById("image");
+
+      let progress = document.getElementById("progress");
+      let transparency = document.getElementById("transparency");
+      let colorPicker = document.getElementById("colorPicker");
+
+      setInterval(() => {
+        image.style.borderWidth = `${progress.value}px`;
+        image.style.opacity = `${transparency.value / 100}`;
+        image.style.borderColor = `${colorPicker.value}`
+      }, 100);
+    </script>
+  </body>
+</html>
